@@ -1,0 +1,20 @@
+[Desktop Entry]
+Version=0.1
+Name=BITS Cyberoam Client
+Comment=A script to login and logout from BITS Cyberoam
+Exec=/usr/share/BITS_CyberoamClient/BITS_CyberoamClient %U
+TryExec=/usr/share/BITS_CyberoamClient/BITS_CyberoamClient
+Icon=/usr/share/BITS_CyberoamClient/logo.gif
+Terminal=false
+Type=Application
+Categories=Utility;Application;
+
+Actions=Login;Logout
+
+[Desktop Action Login]
+Name=Login
+Exec=/usr/share/BITS_CyberoamClient/BITS_CyberoamClient login
+
+[Desktop Action Logout]
+Name=Logout
+Exec=/usr/share/BITS_CyberoamClient/BITS_CyberoamClient logout

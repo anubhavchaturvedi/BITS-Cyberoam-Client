@@ -1,0 +1,43 @@
+#!/bin/bash
+
+###############################################################################################################
+# BITS Cyberoam Login Manager
+# Author : Anubhav Chaturvedi
+# 
+# This is the script that allows user to login and logout
+# 
+# COMMAND LINE USAGE :
+#	BITS_CyberoamClient OPTION
+#				the OPTION can be either login or logout
+#	
+# The file uses the credentials stored in /etc/BITS_CyberoamClient/BITS_CyberoamClient.conf so make sure
+# that you have filled it.
+#
+###############################################################################################################
+
+CONF_FILE="/etc/BITS_CyberoamClient/BITS_CyberoamClient.conf"
+username=`cat $CONF_FILE | grep username | cut -d = -f 2`
+password=`cat $CONF_FILE | grep password | cut -d = -f 2`
+URL=`cat $CONF_FILE | grep url | cut -d = -f 2`
+imageDIR="/usr/share/BITS_CyberoamClient"
+
+function BITSlogin()
+{
+	loginMessage=`curl $URL -k -s --data username="$username" --data password="$password" --data mode="191"`
+	requiredText=`echo $loginMessage | grep -o "<message>.*</message>" | cut --delimiter=[ -f 3 | cut --delimiter=] -f 1`
+	notify-send -t 5000 -i $imageDIR/logo.gif "BITS Cyberoam" "$requiredText"
+}
+
+function BITSlogout()
+{
+	loginMessage=`curl $URL -k -s --data username="$username" --data password="$password" --data mode="193"`
+    requiredText=`echo $loginMessage | grep -o "<message>.*</message>" | cut --delimiter=[ -f 3 | cut --delimiter=] -f 1`
+    notify-send -t 5000 -i $imageDIR/logo.gif "BITS Cyberoam" "$requiredText"
+}
+
+if [ "$1" == "logout" ]
+then
+	BITSlogout
+else
+	BITSlogin
+fi

@@ -6,6 +6,7 @@
 
 echo -n "Checking dependency . . .  ";
 command -v curl >/dev/null 2>&1 || { echo "curl not installed. Use sudo apt-get install curl and then try again. Aborting." >&2; exit 1; }
+echo "[ OK ]"
 
 sudo bash installer.sh
 

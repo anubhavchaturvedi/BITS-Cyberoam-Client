@@ -13,6 +13,11 @@ cd BITS-Cyberoam-Client-master<br>
 
 The credentials can be managed by editing the file /etc/BITS_CyberoamClient/BITS_CyberoamClient.conf
 
+DEPENDENCY:
+<ul>
+	<li>curl</li>
+</ul>
+
 Main directory locations:
 <ul>
   <li>/etc/BITS_CyberoamClient</li>

@@ -5,11 +5,17 @@ This is an application to ease the process of regularly logging in and out of th
 
 Message returned by the server is displayed as a notification.
 
-SETUP INSTRUCTIONS:<br>
-Extract the contents to a folder ( eg. BITS-Cyberoam-Client-master ) and move to the directory. Then execute the main_installer.sh file.
+SETUP INSTRUCTIONS:
+<ul>
+      <li>Extract the contents to a folder ( eg. BITS-Cyberoam-Client-master ) and move to the directory. Then execute the main_installer.sh file.</li>
 
-cd BITS-Cyberoam-Client-master<br>
-./main_installer.sh
+      <li>cd BITS-Cyberoam-Client-master
+          ./main_installer.sh</li>
+          
+      <li> cp ~/.local/share/applications/BITS_CyberoamClient.desktop Desktop (Creates icon in desktop) </li>
+      
+</ul>
+
 
 The credentials can be managed by editing the file /etc/BITS_CyberoamClient/BITS_CyberoamClient.conf
 

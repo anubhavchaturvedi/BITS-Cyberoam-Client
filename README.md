@@ -9,10 +9,10 @@ SETUP INSTRUCTIONS:
 <ul>
       <li>Extract the contents to a folder ( eg. BITS-Cyberoam-Client-master ) and move to the directory. Then execute the main_installer.sh file.</li>
 
-      <li>cd BITS-Cyberoam-Client-master
-          ./main_installer.sh</li>
+      <code>cd BITS-Cyberoam-Client-master<br>
+          ./main_installer.sh</code>
           
-      <li> cp ~/.local/share/applications/BITS_CyberoamClient.desktop Desktop (Creates icon in desktop) </li>
+      <li> <code>cp ~/.local/share/applications/BITS_CyberoamClient.desktop Desktop</code> (Creates icon in desktop) </li>
       
 </ul>
 

@@ -24,15 +24,25 @@ imageDIR="/usr/share/BITS_CyberoamClient"
 function BITSlogin()
 {
 	loginMessage=`curl $URL -k -s --data username="$username" --data password="$password" --data mode="191"`
-	requiredText=`echo $loginMessage | grep -o "<message>.*</message>" | cut --delimiter=[ -f 3 | cut --delimiter=] -f 1`
+	if [ -z "$loginMessage" ]
+	then 
+		requiredText="Could not connect to the server"
+	else
+		requiredText=`echo $loginMessage | grep -o "<message>.*</message>" | cut --delimiter=[ -f 3 | cut --delimiter=] -f 1`
+	fi
 	notify-send -t 5000 -i $imageDIR/logo.gif "BITS Cyberoam" "$requiredText"
 }
 
 function BITSlogout()
 {
 	loginMessage=`curl $URL -k -s --data username="$username" --data password="$password" --data mode="193"`
-    requiredText=`echo $loginMessage | grep -o "<message>.*</message>" | cut --delimiter=[ -f 3 | cut --delimiter=] -f 1`
-    notify-send -t 5000 -i $imageDIR/logo.gif "BITS Cyberoam" "$requiredText"
+    if [ -z "$loginMessage" ]
+    then
+        requiredText="Could not connect to the server"
+    else
+        requiredText=`echo $loginMessage | grep -o "<message>.*</message>" | cut --delimiter=[ -f 3 | cut --delimiter=] -f 1`
+    fi
+	notify-send -t 5000 -i $imageDIR/logo.gif "BITS Cyberoam" "$requiredText"
 }
 
 if [ "$1" == "logout" ]
